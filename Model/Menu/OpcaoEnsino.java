@@ -1,28 +1,17 @@
 package Model.Menu;
 
-public class OpcaoEnsino implements ItemMenu {
-    private int numero;
-    private String titulo;
-    private Menu submenu;
+import Model.Menu.SubmenuEnsino.OpcaoMinistrarReforco;
+import Model.Menu.SubmenuEnsino.OpcaoMonitoriaLaboratorio;
 
+public class OpcaoEnsino extends OpcaoComSubmenu{
+    public OpcaoEnsino(int numero, String titulo) {
+        super(numero, titulo, new Menu("-- Modalidades de Ensino --",
+            new OpcaoMinistrarReforco(1, "Ministrar aula de reforço (limite 10h)"),
+            new OpcaoMonitoriaLaboratorio(2, "Monitoria de laboratório (limite 15h)"),
+            new OpcaoVoltar(0, "Voltar ao menu de modalidades")
+        ));
+    }
     public OpcaoEnsino(int numero, String titulo, Menu submenu) {
-        this.numero = numero;
-        this.titulo = titulo;
-        this.submenu = submenu;
-    }
-
-    @Override
-    public int numero() {
-        return numero;
-    }
-
-    @Override
-    public String titulo() {
-        return titulo;
-    }
-
-    @Override
-    public void exibir() {
-        submenu.exibir();
+        super(numero, titulo, submenu);
     }
 }

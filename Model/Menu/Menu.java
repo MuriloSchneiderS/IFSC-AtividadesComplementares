@@ -31,7 +31,7 @@ public class Menu {
             for (ItemMenu item : itensDeMenu) {
                 if (item.numero() == opcao) {
                     item.exibir();
-                    return !(item instanceof OpcaoFinal);
+                    return !(item instanceof OpcaoVoltar);
                 }
             }
             return true;

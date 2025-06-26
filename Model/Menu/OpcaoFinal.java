@@ -1,22 +1,8 @@
 package Model.Menu;
 
-public class OpcaoFinal implements ItemMenu {
-    private int numero;
-    private String titulo;
-
+public class OpcaoFinal extends OpcaoVoltar {
     public OpcaoFinal(int numero, String titulo) {
-        this.numero = numero;
-        this.titulo = titulo;
-    }
-
-    @Override
-    public int numero() {
-        return numero;
-    }
-
-    @Override
-    public String titulo() {
-        return titulo;
+        super(numero, titulo);
     }
 
     @Override

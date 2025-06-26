@@ -1,12 +1,12 @@
-package Model.Menu.SubmenuEnsino;
-import Model.Menu.OpcaoFinal;
+package Model.Menu;
 
-public class OpcaoVoltar extends OpcaoFinal {
+public class OpcaoVoltar implements ItemMenu {
     private int numero;
     private String titulo;
 
     public OpcaoVoltar(int numero, String titulo) {
-        super(numero, titulo);
+        this.numero = numero;
+        this.titulo = titulo;
     }
 
     @Override
@@ -21,6 +21,6 @@ public class OpcaoVoltar extends OpcaoFinal {
 
     @Override
     public void exibir() {
-        System.out.println("Voltando ao menu principal...");
+        System.out.println("Voltando ao menu principal...\n");
     }
 }

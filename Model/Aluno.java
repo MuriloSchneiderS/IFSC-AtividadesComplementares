@@ -3,12 +3,14 @@ package Model;
 public class Aluno {
     private String nome;
     private String matricula;
+    
     public Aluno(String nome) {
-        if (nome == null || nome.trim().isEmpty()) {
-            throw new IllegalArgumentException("Nome não pode ser vazio");
-        }
         this.nome = nome;
         this.matricula = gerarMatricula();
+    }
+    public Aluno(String nome, String matricula){
+        this.nome = nome;
+        this.matricula = matricula;
     }
 
     public String nome(){
