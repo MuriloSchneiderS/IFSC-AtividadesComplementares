@@ -1,11 +1,10 @@
-package Model.Menu.SubmenuEnsino;
-import Model.Menu.ItemMenu;
+package View.Menu;
 
-public class OpcaoMinistrarReforco implements ItemMenu {
+public class OpcaoVoltar implements ItemMenu {
     private int numero;
     private String titulo;
 
-    public OpcaoMinistrarReforco(int numero, String titulo) {
+    public OpcaoVoltar(int numero, String titulo) {
         this.numero = numero;
         this.titulo = titulo;
     }
@@ -22,7 +21,6 @@ public class OpcaoMinistrarReforco implements ItemMenu {
 
     @Override
     public void exibir() {
-        System.out.println("ministrar reforço");
+        System.out.println("Voltando ao menu principal...\n");
     }
 }
-

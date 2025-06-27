@@ -1,4 +1,4 @@
-package Model.Menu;
+package View.Menu;
 
 public class OpcaoFinal extends OpcaoVoltar {
     public OpcaoFinal(int numero, String titulo) {

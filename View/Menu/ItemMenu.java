@@ -1,4 +1,4 @@
-package Model.Menu;
+package View.Menu;
 
 public interface ItemMenu {
     int numero();

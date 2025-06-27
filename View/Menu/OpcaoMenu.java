@@ -1,11 +1,10 @@
-package Model.Menu.SubmenuComplementacao;
-import Model.Menu.ItemMenu;
+package View.Menu;
 
-public class OpcaoVisitaTecnica implements ItemMenu {
+public class OpcaoMenu implements ItemMenu{
     private int numero;
     private String titulo;
 
-    public OpcaoVisitaTecnica(int numero, String titulo) {
+    public OpcaoMenu(int numero, String titulo) {
         this.numero = numero;
         this.titulo = titulo;
     }
@@ -22,7 +21,6 @@ public class OpcaoVisitaTecnica implements ItemMenu {
 
     @Override
     public void exibir() {
-        System.out.println("Executando visita técnica: " + titulo);
-    }
-    
+        
+    }    
 }

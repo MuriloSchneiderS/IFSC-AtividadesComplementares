@@ -1,4 +1,4 @@
-package Model.Menu;
+package View.Menu;
 
 import java.util.Arrays;
 import java.util.List;

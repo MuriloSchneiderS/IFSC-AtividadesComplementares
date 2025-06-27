@@ -1,13 +1,14 @@
-package Model.Menu.SubmenuEnsino;
-import Model.Menu.ItemMenu;
+package View.Menu;
 
-public class OpcaoMonitoriaLaboratorio implements ItemMenu {
+public class OpcaoComSubmenu implements ItemMenu {
     private int numero;
     private String titulo;
+    private Menu submenu;
 
-    public OpcaoMonitoriaLaboratorio(int numero, String titulo) {
+    public OpcaoComSubmenu(int numero, String titulo, Menu submenu) {
         this.numero = numero;
         this.titulo = titulo;
+        this.submenu = submenu;
     }
 
     @Override
@@ -22,7 +23,11 @@ public class OpcaoMonitoriaLaboratorio implements ItemMenu {
 
     @Override
     public void exibir() {
-
+        submenu.exibir();
     }
-}
 
+    public Menu submenu() {
+        return submenu;
+    }
+    
+}
