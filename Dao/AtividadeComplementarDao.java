@@ -17,17 +17,17 @@ public class AtividadeComplementarDao {
     public AtividadeComplementarDao(){
         conexao = ConexaoDao.getConexao();
     }
-    
-    public List<AtividadeComplementar> consultarTudo(){
-        String sql = "select id, nome from atividade_complementar";
-        List<AtividadeComplementar> atividade = new ArrayList<>();
+
+    public List<AtividadeComplementar> consultarPorModalidade(int idModalidade){
+        String sql = "select id, descricao, limite_maximo from atividade_complementar where modalidade_id = " + idModalidade + ";";
+        List<AtividadeComplementar> atividades = new ArrayList<>();
         try {
             Statement stm = conexao.createStatement();
             ResultSet result = stm.executeQuery(sql);
             while (result.next()) {
-                atividade.add(new AtividadeComplementar(result.getInt("id"), result.getString("descricao")));
+                atividades.add(new AtividadeComplementar(result.getInt("id"), result.getString("descricao"), result.getInt("limite_maximo")));
             }
-            return atividade;
+            return atividades;
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
