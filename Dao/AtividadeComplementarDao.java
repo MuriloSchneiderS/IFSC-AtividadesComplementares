@@ -36,4 +36,21 @@ public class AtividadeComplementarDao {
             return null;
         }
     }
+    public AtividadeComplementar consultarPorId(int idAtividade) {
+        String sql = "select * from atividade_complementar where id = " + idAtividade + ";";
+        try (PreparedStatement pstmt = ConexaoDao.setComando(sql)) {
+            ResultSet rs = pstmt.executeQuery();
+            if(rs.next()) {
+                return new AtividadeComplementar(
+                    rs.getInt("id"),
+                    rs.getString("descricao"),
+                    rs.getInt("limite_maximo")
+                );
+            }
+            return null;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

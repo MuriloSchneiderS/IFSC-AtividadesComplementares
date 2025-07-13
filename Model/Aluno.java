@@ -1,6 +1,7 @@
 package Model;
 
 public class Aluno {
+    private int id;
     private String nome;
     private String matricula;
     
@@ -13,6 +14,9 @@ public class Aluno {
         this.matricula = matricula;
     }
 
+    public int id() {
+        return id;
+    }
     public String nome(){
         return nome;
     }

@@ -1,5 +1,7 @@
 package View.Menu;
 
+import Dao.OpcaoFinalDao;
+
 public class OpcaoFinal extends OpcaoVoltar {
     public OpcaoFinal(int numero, String titulo) {
         super(numero, titulo);
@@ -7,6 +9,8 @@ public class OpcaoFinal extends OpcaoVoltar {
 
     @Override
     public void exibir() {
+        System.out.println("=== PARECER DE VALIDAÇÃO ===");
+        new OpcaoFinalDao().emitirUltimoParecer();
         System.out.println("== Menu encerrado. ==");
     }
 }

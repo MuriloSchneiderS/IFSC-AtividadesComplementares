@@ -1,3 +1,4 @@
+--"jdbc:postgresql://localhost:5432/AtividadesComplementares","postgres", "admin"
 -- TABELAS
 CREATE TABLE aluno (
     id SERIAL PRIMARY KEY,

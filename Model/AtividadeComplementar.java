@@ -3,17 +3,20 @@ package Model;
 public class AtividadeComplementar {
     private int id;
     private String descricao;
-    private int limiteHoras;
-    public AtividadeComplementar(int id, String descricao, int limiteHoras) {
+    private int limite_horas;
+    public AtividadeComplementar(int id, String descricao, int limite_horas) {
         this.id = id;
         this.descricao = descricao;
-        this.limiteHoras = limiteHoras;
+        this.limite_horas = limite_horas;
     }
 
+    public int id() {
+        return id;
+    }
     public String descricao() {
         return descricao;
     }
-    public int limiteHoras() {
-        return limiteHoras;
+    public int limite_horas() {
+        return limite_horas;
     }
 }
