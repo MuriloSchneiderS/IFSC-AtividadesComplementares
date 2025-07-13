@@ -21,6 +21,6 @@ public class OpcaoMenu implements ItemMenu{
 
     @Override
     public void exibir() {
-        
+        System.out.println("Opcao Menu "+numero+": "+titulo);
     }    
 }

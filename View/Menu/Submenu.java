@@ -3,11 +3,8 @@ package View.Menu;
 import java.util.ArrayList;
 
 public class Submenu extends Menu {
-    private ArrayList<OpcaoMenu> itensDeSubmenu;
-
-    public Submenu(String titulo, ArrayList<OpcaoMenu> itens) {
-        super(titulo);
-        this.itensDeSubmenu = itens;
+    public Submenu(String titulo, ArrayList<ItemMenu> itens){
+        super(titulo, itens);
     }
 
     @Override

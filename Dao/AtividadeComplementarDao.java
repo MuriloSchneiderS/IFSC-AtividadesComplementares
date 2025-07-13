@@ -1,9 +1,9 @@
 package Dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,13 +19,16 @@ public class AtividadeComplementarDao {
     }
 
     public List<AtividadeComplementar> consultarPorModalidade(int idModalidade){
-        String sql = "select id, descricao, limite_maximo from atividade_complementar where modalidade_id = " + idModalidade + ";";
+        String sql = "select * from atividade_complementar where modalidade_id = " + idModalidade + ";";
         List<AtividadeComplementar> atividades = new ArrayList<>();
-        try {
-            Statement stm = conexao.createStatement();
-            ResultSet result = stm.executeQuery(sql);
-            while (result.next()) {
-                atividades.add(new AtividadeComplementar(result.getInt("id"), result.getString("descricao"), result.getInt("limite_maximo")));
+        try (PreparedStatement pstmt = ConexaoDao.setComando(sql)) {
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next()) {
+                atividades.add(new AtividadeComplementar(
+                    rs.getInt("id"),
+                    rs.getString("descricao"),
+                    rs.getInt("limite_maximo")
+                ));
             }
             return atividades;
         } catch (SQLException e) {

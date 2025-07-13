@@ -7,4 +7,8 @@ public class Modalidade {
         this.id = id;
         this.nome = nome;
     }
+
+    public String nome(){
+        return nome;
+    }
 }

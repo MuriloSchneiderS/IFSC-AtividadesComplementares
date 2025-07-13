@@ -1,17 +1,17 @@
 package View.Menu;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
     private String titulo;
-    private List<ItemMenu> itensDeMenu;
+    private ArrayList<ItemMenu> itensDeMenu;
     static Scanner input = new Scanner(System.in);
 
-    public Menu(String titulo, ItemMenu... itens) {
+    public Menu(String titulo, ArrayList<ItemMenu> itens) {
         this.titulo = titulo;
-        this.itensDeMenu = Arrays.asList(itens);
+        this.itensDeMenu = itens;
     }
 
     public void exibir(){
