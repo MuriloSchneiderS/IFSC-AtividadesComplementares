@@ -18,6 +18,8 @@ public class ValidacaoAtividadeDao {
     }
 
     public void insertValidacaoAtividade(AtividadeRealizada atividade_realizada, AtividadeComplementar atividade_complementar, Parecer parecer, int horas_apresentadas) {
+        // Valida as horas apresentadas de acordo com o limite da atividade complementar
+        // Insere as horas validadas na tabela validacao_atividade
         String sql = "insert into validacao_atividade values (default, "+atividade_realizada.id()+", "+validarHoras(horas_apresentadas, atividade_complementar.limite_horas())+", "+parecer.id()+")";
         try {
             PreparedStatement pstmt = conexao.prepareStatement(sql);

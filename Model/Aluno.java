@@ -25,6 +25,7 @@ public class Aluno {
         return matricula;
     }
     private static String gerarMatricula() {
+        // Matrícula aleatória para exemplo
         return String.format("%09d", (int)(Math.random() * 1_000_000_000));
     }
 }
