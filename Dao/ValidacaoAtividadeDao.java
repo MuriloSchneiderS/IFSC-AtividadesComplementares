@@ -17,8 +17,8 @@ public class ValidacaoAtividadeDao {
         conexao = ConexaoDao.getConexao();
     }
 
-    public void insertValidacaoAtividade(AtividadeRealizada atividade_realizada, AtividadeComplementar atividade_complementar, Parecer parecer, int horas_declaradas) {
-        String sql = "insert into validacao_atividade values (default, "+atividade_realizada.id()+", "+validarHoras(horas_declaradas, atividade_complementar.limite_horas())+", "+parecer.id()+")";
+    public void insertValidacaoAtividade(AtividadeRealizada atividade_realizada, AtividadeComplementar atividade_complementar, Parecer parecer, int horas_apresentadas) {
+        String sql = "insert into validacao_atividade values (default, "+atividade_realizada.id()+", "+validarHoras(horas_apresentadas, atividade_complementar.limite_horas())+", "+parecer.id()+")";
         try {
             PreparedStatement pstmt = conexao.prepareStatement(sql);
             pstmt.executeUpdate();
@@ -46,13 +46,13 @@ public class ValidacaoAtividadeDao {
         }
     }
 
-    public int validarHoras(int horas_declaradas, int limite_horas){
-        if (horas_declaradas > limite_horas) 
+    public int validarHoras(int horas_apresentadas, int limite_horas){
+        if (horas_apresentadas > limite_horas) 
             return limite_horas;
-        else if(horas_declaradas < 0) 
+        else if(horas_apresentadas < 0) 
             return 0; 
         else 
-            return horas_declaradas;
+            return horas_apresentadas;
         
     }
 }

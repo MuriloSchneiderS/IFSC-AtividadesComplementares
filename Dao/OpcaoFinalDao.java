@@ -34,9 +34,9 @@ public class OpcaoFinalDao {
         for (AtividadeRealizada atividadeRealizada : atividadesRealizadas){
             System.out.println("Atividade " + c + ":");
             AtividadeComplementar atividadeComplementar = new AtividadeComplementarDao().consultarPorId(atividadeRealizada.atividade_id());
-            System.out.println("  Descrição:       " + atividadeComplementar.descricao());
+            System.out.println("  Descrição:        " + atividadeComplementar.descricao());
             System.out.println("  Horas declaradas: " + atividadeRealizada.horas_apresentadas() + "h");
-            System.out.println("  Limite Máximo:   " + atividadeComplementar.limite_horas() + "h");
+            System.out.println("  Limite Máximo:    " + atividadeComplementar.limite_horas() + "h");
             ValidacaoAtividade validacaoAtividade = new ValidacaoAtividadeDao().consultarValidacaoPorAtividadeRealizada(atividadeRealizada);
             System.out.println("  Horas validadas:  " + validacaoAtividade.horas_validadas() + "h");
             System.out.println(gerarObservacao(atividadeRealizada.horas_apresentadas(), atividadeComplementar.limite_horas()));
@@ -47,15 +47,15 @@ public class OpcaoFinalDao {
         }
         System.out.println("Resumo geral:");
         
-        System.out.println("Total de horas declaradas: "+ totHorasDeclaradas + "h");
-        System.out.println("Total de horas validadas: "+ totHorasValidadas + "h");
+        System.out.println("  Total de horas declaradas: "+ totHorasDeclaradas + "h");
+        System.out.println("  Total de horas validadas:  "+ totHorasValidadas + "h");
     }
 
     public String gerarObservacao(int horas_apresentadas, int limite_horas) {
-        System.out.print("  Observação:      ");
+        System.out.print("  Observação:       ");
         if (horas_apresentadas > limite_horas) 
             return "Horas declaradas (" + horas_apresentadas + "h) excedem o limite (" + limite_horas + "h); ajustadas para " + limite_horas + "h.";
         else 
-            return "-- (sem ajuste)";
+            return "--(sem ajuste)";
     }
 }
