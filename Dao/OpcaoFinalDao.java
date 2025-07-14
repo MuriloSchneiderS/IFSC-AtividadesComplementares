@@ -3,6 +3,7 @@ package Dao;
 import java.sql.Connection;
 import java.util.List;
 
+import Model.Aluno;
 import Model.AtividadeComplementar;
 import Model.AtividadeRealizada;
 import Model.Parecer;
@@ -16,11 +17,16 @@ public class OpcaoFinalDao {
         conexao = ConexaoDao.getConexao();
     }
 
-    public void emitirUltimoParecer(){
-        System.out.println("Matrícula: 20250000");
+    public void emitirUltimoParecer(Aluno aluno){
+        System.out.println("Aluno: " + aluno.nome()+", Matrícula: " + aluno.matricula());
 
-        Requerimento ultimoRequerimento = new RequerimentoDao().ultimoRequerimentoDoAluno(5);
+        Requerimento ultimoRequerimento = new RequerimentoDao().ultimoRequerimentoDoAluno(aluno.id());
         Parecer ultimoParecer = new ParecerDao().ultimoParecerDoRequerimento(ultimoRequerimento);
+        if (ultimoParecer == null) {
+            System.out.println("Criação de parecer cancelada, emitindo parecer do último requerimento do aluno.");
+            ultimoRequerimento = new RequerimentoDao().penultimoRequerimentoDoAluno(aluno.id());
+            ultimoParecer = new ParecerDao().ultimoParecerDoRequerimento(ultimoRequerimento);
+        }
         System.out.println("Data emissão: " + ultimoParecer.data_parecer());
 
         List<AtividadeRealizada> atividadesRealizadas = new AtividadeRealizadaDao().consultarAtividadesRealizadasPorRequerimento(ultimoRequerimento);

@@ -49,6 +49,8 @@ public class ValidacaoAtividadeDao {
     public int validarHoras(int horas_declaradas, int limite_horas){
         if (horas_declaradas > limite_horas) 
             return limite_horas;
+        else if(horas_declaradas < 0) 
+            return 0; 
         else 
             return horas_declaradas;
         

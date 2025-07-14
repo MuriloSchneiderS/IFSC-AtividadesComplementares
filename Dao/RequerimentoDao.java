@@ -1,11 +1,10 @@
 package Dao;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import Model.Parecer;
+import Model.Aluno;
 import Model.Requerimento;
 
 public class RequerimentoDao {
@@ -15,11 +14,11 @@ public class RequerimentoDao {
         conexao = ConexaoDao.getConexao();
     }
 
-    public Requerimento insertRequerimento(int alunoId) {
-        String sql = "insert into requerimento values (default," + alunoId + ", default, default, null);";
+    public Requerimento insertRequerimento(Aluno aluno) {
+        String sql = "insert into requerimento values (default," + aluno.id() + ", default, default, null);";
         try {
             conexao.createStatement().executeUpdate(sql);
-            return ultimoRequerimentoDoAluno(alunoId);
+            return ultimoRequerimentoDoAluno(aluno.id());
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
@@ -30,6 +29,26 @@ public class RequerimentoDao {
         try {
             ResultSet rs = conexao.createStatement().executeQuery(sql);
             if (rs.next()) {
+                return new Requerimento(
+                    rs.getInt("id"),
+                    rs.getInt("aluno_id"),
+                    rs.getString("data_requerimento"),
+                    rs.getString("status"),
+                    rs.getString("data_validacao")
+                );
+            }
+            return null;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public Requerimento penultimoRequerimentoDoAluno(int alunoId) {
+        String sql = "SELECT * FROM requerimento WHERE aluno_id = " + alunoId + " ORDER BY id DESC LIMIT 2";
+        try {
+            ResultSet rs = conexao.createStatement().executeQuery(sql);
+            if (rs.next()) {
+                rs.next(); // Pula o primeiro resultado, que é o último
                 return new Requerimento(
                     rs.getInt("id"),
                     rs.getInt("aluno_id"),

@@ -5,13 +5,14 @@ public class Aluno {
     private String nome;
     private String matricula;
     
-    public Aluno(String nome) {
+    public Aluno(int id, String nome) {
+        this.id = id;
         this.nome = nome;
         this.matricula = gerarMatricula();
     }
-    public Aluno(String nome, String matricula){
+    public Aluno(String nome){
         this.nome = nome;
-        this.matricula = matricula;
+        this.matricula = gerarMatricula();
     }
 
     public int id() {
