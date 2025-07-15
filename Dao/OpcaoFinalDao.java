@@ -22,14 +22,15 @@ public class OpcaoFinalDao {
 
         Requerimento ultimoRequerimento = new RequerimentoDao().ultimoRequerimentoDoAluno(aluno.id());
         Parecer ultimoParecer = new ParecerDao().ultimoParecerDoRequerimento(ultimoRequerimento);
-        if (ultimoParecer == null) {
-            System.out.println("Criação de parecer cancelada, emitindo parecer do último requerimento do aluno.");
+        List<AtividadeRealizada> atividadesRealizadas = new AtividadeRealizadaDao().consultarAtividadesRealizadasPorRequerimento(ultimoRequerimento);
+        if(atividadesRealizadas.isEmpty()){
+            System.out.println("Criação de parecer cancelada, emitindo parecer do requerimento anterior do aluno.");
             ultimoRequerimento = new RequerimentoDao().penultimoRequerimentoDoAluno(aluno.id());
             ultimoParecer = new ParecerDao().ultimoParecerDoRequerimento(ultimoRequerimento);
+            atividadesRealizadas = new AtividadeRealizadaDao().consultarAtividadesRealizadasPorRequerimento(ultimoRequerimento);
         }
         System.out.println("Data emissão: " + ultimoParecer.data_parecer());
 
-        List<AtividadeRealizada> atividadesRealizadas = new AtividadeRealizadaDao().consultarAtividadesRealizadasPorRequerimento(ultimoRequerimento);
         int c = 1, totHorasDeclaradas = 0, totHorasValidadas = 0;
         for (AtividadeRealizada atividadeRealizada : atividadesRealizadas){
             System.out.println("Atividade " + c + ":");

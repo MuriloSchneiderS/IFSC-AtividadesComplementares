@@ -44,11 +44,10 @@ public class RequerimentoDao {
         }
     }
     public Requerimento penultimoRequerimentoDoAluno(int alunoId) {
-        String sql = "SELECT * FROM requerimento WHERE aluno_id = " + alunoId + " ORDER BY id DESC LIMIT 2";
+        String sql = "SELECT * FROM requerimento WHERE aluno_id = " + alunoId + " ORDER BY id DESC LIMIT 1 OFFSET 1";
         try {
             ResultSet rs = conexao.createStatement().executeQuery(sql);
             if (rs.next()) {
-                rs.next(); // Pula o primeiro resultado, que é o último
                 return new Requerimento(
                     rs.getInt("id"),
                     rs.getInt("aluno_id"),
